@@ -1,15 +1,15 @@
-
 let page = 1;
-let editId = null; // stores contact id while editing
+let editId = null;
 
 // fetch contacts
 async function fetchContacts() {
   const sort = document.getElementById("sort").value;
   const country = document.getElementById("country").value;
   const limit = document.getElementById("limit").value;
+  const search = document.getElementById("searchInput").value;
 
   const res = await fetch(
-    `/api/contacts?page=${page}&limit=${limit}&sort=${sort}&countryCode=${country}`
+    `/api/contacts?page=${page}&limit=${limit}&sort=${sort}&countryCode=${country}&search=${search}`
   );
 
   const data = await res.json();
@@ -17,6 +17,7 @@ async function fetchContacts() {
 
   document.getElementById("page").innerText =
     `${data.currentPage} / ${data.totalPages}`;
+
 }
 
 //render contacts
@@ -109,6 +110,18 @@ async function editContact(id) {
   editId = id;
 }
 
+// live search as user types
+document.getElementById("searchInput").addEventListener("input", () => {
+  page = 1;
+  fetchContacts();
+});
+
+// search when button is clicked
+document.getElementById("searchBtn").addEventListener("click", () => {
+  page = 1;
+  fetchContacts();
+});
+
 // when filters change, reset to first page and refetch
 document.getElementById("sort").addEventListener("change", () => {
   page = 1;
@@ -139,4 +152,8 @@ document.getElementById("prev").onclick = () => {
 };
 
 fetchContacts();
+
+
+
+
 

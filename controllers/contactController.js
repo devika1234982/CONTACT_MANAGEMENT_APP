@@ -1,6 +1,5 @@
 import Contact from "../models/contact.js";
 
-
 //GET CONTACT
 export const getContacts = async (req, res) => {
   try {
@@ -12,6 +11,18 @@ export const getContacts = async (req, res) => {
     const skip = (page - 1) * limit;
 
     let filter = {};
+     
+     if (countryCode && countryCode !== "") {
+      filter.countryCode = countryCode;
+    }
+
+    if (req.query.search) {
+  filter.name = {
+    $regex: req.query.search,
+    $options: "i" // case-insensitive
+  };
+}
+
     if (countryCode) filter.countryCode = countryCode;
 
     let sortOption = sort === "latest" ? { createdAt: -1 } : { createdAt: 1 };
@@ -92,4 +103,3 @@ export const deleteContact = async (req, res) => {
 };
 
      
-

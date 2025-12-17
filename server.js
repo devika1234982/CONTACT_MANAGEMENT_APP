@@ -8,15 +8,15 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config(); //read values from .env file
+dotenv.config(); 
 
 connectDB();
 
-const app = express();//express initialization
+const app = express();
 
-app.use(express.json());//to read json data sent frm frntend
+app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "./public"))); //to access frntend from public folder
+app.use(express.static(path.join(__dirname, "./public"))); 
 
 app.use("/api", contactRoutes);
 

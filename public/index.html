@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Contact Management App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <h2>Contact Management</h2>
 
   <!-- Add Contact Form -->
   <form id="contactForm">
-    <input type="text" id="name" placeholder="Enter Name" required/>
-    <input type="text" id="phone" placeholder="Enter Phone Number" required/>
+    <input type="text" id="name" placeholder="Enter Name" required />
+    <input type="text" id="phone" placeholder="Enter Phone Number" required />
 
-   
     <select id="countryCode">
       <option value="+91">India (+91)</option>
       <option value="+1">USA (+1)</option>
@@ -24,6 +25,12 @@
   </form>
 
   <hr />
+
+  <!-- Search bar -->
+  <div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search by name..." />
+    <button type="button" id="searchBtn">Search</button>
+  </div>
 
   <!-- Filter -->
   <select id="sort">
@@ -52,4 +59,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
