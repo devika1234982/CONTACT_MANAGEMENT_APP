@@ -1,0 +1,27 @@
+{
+  "name": "contact_management_app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devika1234982/CONTACT_MANAGEMENT_APP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type":"module",
+  "bugs": {
+    "url": "https://github.com/devika1234982/CONTACT_MANAGEMENT_APP/issues"
+  },
+  "homepage": "https://github.com/devika1234982/CONTACT_MANAGEMENT_APP#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
+  }
+}

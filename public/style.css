@@ -1,0 +1,226 @@
+body {
+  margin: 0;
+  padding: 32px 12px 40px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #1b2a3a 0, #050810 55%, #020308 100%);
+  color: #f5f5f5;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+/* Form container */
+form {
+  background: #111822;
+  padding: 20px 24px;
+  border-radius: 12px;
+  max-width: 420px;
+  margin: 0 auto 24px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Inputs & selects */
+form input,
+form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(9, 20, 35, 0.9);
+  color: #f5f5f5;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+form input::placeholder {
+  color: rgba(245, 245, 245, 0.6);
+}
+
+form input:focus,
+form select:focus {
+  border-color: #36d1dc;
+  box-shadow: 0 0 0 2px rgba(54, 209, 220, 0.3);
+  background-color: rgba(9, 20, 35, 1);
+}
+
+/* Button */
+form button {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 4px 0 0;
+  width: 100%;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+form button:hover {
+  filter: brightness(1.03);
+  box-shadow: 0 10px 22px rgba(91, 134, 229, 0.35);
+  transform: translateY(-1px);
+}
+
+form button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(91, 134, 229, 0.4);
+}
+
+/* Filters row */
+#sort,
+#country,
+#limit {
+  background-color: rgba(9, 20, 35, 0.9);
+  color: #f5f5f5;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 14px;
+  margin: 0 6px 20px;
+  min-width: 120px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+#sort:focus,
+#country:focus,
+#limit:focus {
+  border-color: #36d1dc;
+  box-shadow: 0 0 0 2px rgba(54, 209, 220, 0.3);
+  background-color: rgba(9, 20, 35, 1);
+}
+
+/* Layout wrapper for filters, list and pagination */
+#contacts {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* Contact card */
+.card {
+  background: rgba(10, 16, 25, 0.95);
+  border-radius: 14px;
+  padding: 14px 16px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  border-color: rgba(91, 134, 229, 0.6);
+}
+
+.card h4 {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  opacity: 0.86;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.card button,
+.card .btn {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.card .btn-edit {
+  background: rgba(54, 209, 220, 0.16);
+  color: #5eead4;
+  border: 1px solid rgba(45, 212, 191, 0.4);
+}
+
+.card .btn-delete {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fecaca;
+  border: 1px solid rgba(248, 113, 113, 0.5);
+}
+
+.card button:hover,
+.card .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.card button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Pagination */
+#prev,
+#next {
+  background: rgba(9, 20, 35, 0.9);
+  color: #f5f5f5;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  margin: 0 8px;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+#prev:hover,
+#next:hover {
+  background: rgba(15, 30, 52, 0.9);
+  border-color: #36d1dc;
+  transform: translateY(-1px);
+}
+
+#page {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px 28px;
+  }
+
+  #sort,
+  #country,
+  #limit {
+    display: block;
+    margin: 0 auto 12px;
+    width: 100%;
+    max-width: 420px;
+  }
+}
