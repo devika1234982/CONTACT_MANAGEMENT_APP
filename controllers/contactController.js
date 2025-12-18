@@ -12,21 +12,21 @@ export const getContacts = async (req, res) => {
 
     let filter = {};
 
-    //  if (countryCode && countryCode !== "") {
-    //   filter.countryCode = countryCode;
-    // }
+
     if (countryCode && countryCode.trim() !== "") {
       filter.countryCode = countryCode.trim();
     }
 
-    if (req.query.search) {
-  filter.name = {
-    $regex: req.query.search,
-    $options: "i" // case-insensitive
-  };
-}
+    if (req.query.search && req.query.search.trim() !== "") {
+      const search = req.query.search.trim();
 
-    // if (countryCode) filter.countryCode = countryCode;
+      filter.$or = [
+        { name: { $regex: search, $options: "i" } },
+        { phone: { $regex: search } }
+      ];
+    }
+
+
 
     let sortOption = sort === "latest" ? { createdAt: -1 } : { createdAt: 1 };
 
@@ -105,4 +105,4 @@ export const deleteContact = async (req, res) => {
   }
 };
 
-     
+

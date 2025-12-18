@@ -22,4 +22,4 @@ app.use("/api", contactRoutes);
 
 const PORT = process.env.PORT || 5006
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:5006`));

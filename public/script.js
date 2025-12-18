@@ -1,6 +1,6 @@
 let page = 1;
 let editId = null;
-
+let totalPages = 1;
 
 // fetch contacts
 async function fetchContacts() {
@@ -14,11 +14,12 @@ async function fetchContacts() {
   );
 
   const data = await res.json();
+  totalPages = data.totalPages;
+
   renderContacts(data.contacts);
 
   document.getElementById("page").innerText =
-    `${data.currentPage} / ${data.totalPages}`;
-
+    `${data.currentPage} / ${totalPages}`;
 }
 
 //render contacts
@@ -65,11 +66,11 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
 
 
   if (countryCode === "+91") {
-  if (!/^[6-9][0-9]{9}$/.test(phone)) {
-    alert("Indian number must be 10 digits and start with 6–9");
-    return;
+    if (!/^[6-9][0-9]{9}$/.test(phone)) {
+      alert("Indian number must be 10 digits and start with 6–9");
+      return;
+    }
   }
-}
 
 
   // EDIT MODE
@@ -118,6 +119,8 @@ async function editContact(id) {
   document.getElementById("countryCode").value = contact.countryCode;
 
   editId = id;
+
+  document.getElementById("submitBtn").innerText = "Update Contact";
 }
 
 // live search as user types
@@ -149,17 +152,23 @@ document.getElementById("limit").addEventListener("change", () => {
 });
 
 //pagination
+
+// Next button
 document.getElementById("next").onclick = () => {
-  page++;
-  fetchContacts();
+  if (page < totalPages) {   // check before increasing
+    page++;
+    fetchContacts();
+  }
 };
 
+// Prev button
 document.getElementById("prev").onclick = () => {
   if (page > 1) {
     page--;
     fetchContacts();
   }
 };
+
 
 const phoneInput = document.getElementById("phone");
 
@@ -178,8 +187,6 @@ phoneInput.addEventListener("input", () => {
     phoneInput.value = "";
   }
 });
-
-
 
 fetchContacts();
 
