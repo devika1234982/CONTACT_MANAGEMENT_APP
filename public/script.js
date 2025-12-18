@@ -82,6 +82,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     });
 
     editId = null;
+     document.getElementById("submitBtn").innerText = "Add Contact";
   }
   // ADD MODE
   else {
@@ -186,7 +187,12 @@ phoneInput.addEventListener("input", () => {
     alert("Phone number cannot start with 0");
     phoneInput.value = "";
   }
+
+
+
 });
+
+
 
 fetchContacts();
 
