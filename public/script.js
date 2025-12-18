@@ -1,6 +1,7 @@
 let page = 1;
 let editId = null;
 
+
 // fetch contacts
 async function fetchContacts() {
   const sort = document.getElementById("sort").value;
@@ -9,7 +10,7 @@ async function fetchContacts() {
   const search = document.getElementById("searchInput").value;
 
   const res = await fetch(
-    `/api/contacts?page=${page}&limit=${limit}&sort=${sort}&countryCode=${country}&search=${search}`
+    `/api/contacts?page=${page}&limit=${limit}&sort=${sort}&countryCode=${encodeURIComponent(country)}&search=${encodeURIComponent(search)}`
   );
 
   const data = await res.json();
@@ -61,6 +62,15 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     alert("Please fill all fields");
     return;
   }
+
+
+  if (countryCode === "+91") {
+  if (!/^[6-9][0-9]{9}$/.test(phone)) {
+    alert("Indian number must be 10 digits and start with 6–9");
+    return;
+  }
+}
+
 
   // EDIT MODE
   if (editId) {
@@ -150,6 +160,26 @@ document.getElementById("prev").onclick = () => {
     fetchContacts();
   }
 };
+
+const phoneInput = document.getElementById("phone");
+
+phoneInput.addEventListener("input", () => {
+  // allow only digits
+  phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "");
+
+  // prevent more than 10 digits
+  if (phoneInput.value.length > 10) {
+    phoneInput.value = phoneInput.value.slice(0, 10);
+  }
+
+  // alert if starts with 0
+  if (phoneInput.value.length === 1 && phoneInput.value[0] === "0") {
+    alert("Phone number cannot start with 0");
+    phoneInput.value = "";
+  }
+});
+
+
 
 fetchContacts();
 

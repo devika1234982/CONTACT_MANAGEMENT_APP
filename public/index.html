@@ -14,7 +14,7 @@
   <!-- Add Contact Form -->
   <form id="contactForm">
     <input type="text" id="name" placeholder="Enter Name" required />
-    <input type="text" id="phone" placeholder="Enter Phone Number" required />
+    <input type="text" id="phone" placeholder="Enter Phone Number" maxlength="10" required />
 
     <select id="countryCode">
       <option value="+91">India (+91)</option>
@@ -24,7 +24,7 @@
     <button type="submit">Add Contact</button>
   </form>
 
-  <hr />
+  <!-- <hr /> -->
 
   <!-- Search bar -->
   <div id="searchBar">
@@ -33,29 +33,33 @@
   </div>
 
   <!-- Filter -->
-  <select id="sort">
-    <option value="latest">Latest</option>
-    <option value="old">Old</option>
-  </select>
+  <div id="filtersContainer">
+    <select id="sort">
+      <option value="latest">Latest</option>
+      <option value="old">Old</option>
+    </select>
 
-  <select id="country">
-    <option value="">All Countries</option>
-    <option value="+91">India</option>
-    <option value="+1">USA</option>
-  </select>
+    <select id="country">
+      <option value="">All Countries</option>
+      <option value="+91">India</option>
+      <option value="+1">USA</option>
+    </select>
 
-  <select id="limit">
-    <option value="5">10</option>
-    <option value="10">20</option>
-  </select>
+    <select id="limit">
+      <option value="5">5</option>
+      <option value="10">10</option>
+    </select>
+  </div>
 
   <!-- Contacts List -->
   <div id="contacts"></div>
 
   <!-- Pagination -->
-  <button id="prev">Prev</button>
-  <span id="page"></span>
-  <button id="next">Next</button>
+  <div id="paginationContainer">
+    <button id="prev">Prev</button>
+    <span id="page"></span>
+    <button id="next">Next</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
